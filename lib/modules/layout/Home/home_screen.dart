@@ -2,13 +2,44 @@ import 'package:evently_app/core/extensions/padding.dart';
 import 'package:evently_app/core/extensions/size.dart';
 import 'package:evently_app/core/theme/color_palette.dart';
 import 'package:evently_app/core/widgets/custom_tap_bar_item.dart';
-import 'package:evently_app/modules/layout/widgets/category_card.dart';
+import 'package:evently_app/modules/layout/Home/widgets/category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeScreen extends StatelessWidget {
+import '../../../models/category_data.dart';
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int selectedTapIndex = 0;
+  List<EventCategory> eventCategories = [
+    EventCategory(
+      eventCategoryName: "Book Club",
+      eventCategoryIcon: Icons.menu_book_outlined,
+      eventCategoryImg: "assets/images/book_club_img.png",
+    ),
+    EventCategory(
+        eventCategoryName: "Sport",
+        eventCategoryIcon: Icons.directions_bike,
+        eventCategoryImg: "assets/images/sport_img.png"),
+    EventCategory(
+        eventCategoryName: "BirthDay",
+        eventCategoryIcon: Icons.cake_outlined,
+        eventCategoryImg: "assets/images/birthday_img.png"),
+    EventCategory(
+        eventCategoryName: "Meeting",
+        eventCategoryIcon: Icons.meeting_room_outlined,
+        eventCategoryImg: "assets/images/meeting_img.png"),
+    EventCategory(
+        eventCategoryName: "Holiday",
+        eventCategoryIcon: Icons.holiday_village_outlined,
+        eventCategoryImg: "assets/images/holiday_img.png"),
+  ];
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -27,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                 color: ColorPalette.primaryColor,
               ),
               child: DefaultTabController(
-                length: 6,
+                length: 5,
                 child: Column(
                   children: [
                     Row(
@@ -101,37 +132,31 @@ class HomeScreen extends StatelessWidget {
                           tabs: [
                             Tab(
                                 child: CustomTapBarItem(
-                                    text: "yehia",
-                                    icon: Icons.add_alert,
+                                    text: "Book Club",
+                                    icon: Icons.menu_book_outlined,
                                     isSelected: true)),
                             Tab(
                               child: CustomTapBarItem(
-                                  text: "adel",
-                                  icon: Icons.add_alert,
+                                  text: "Sport",
+                                  icon: Icons.directions_bike,
                                   isSelected: false),
                             ),
                             Tab(
                               child: CustomTapBarItem(
-                                  text: "fares",
-                                  icon: Icons.add_alert,
+                                  text: "BirthDay",
+                                  icon: Icons.cake_outlined,
                                   isSelected: false),
                             ),
                             Tab(
                               child: CustomTapBarItem(
-                                  text: "fares",
-                                  icon: Icons.add_alert,
+                                  text: "Meeting",
+                                  icon: Icons.meeting_room_outlined,
                                   isSelected: false),
                             ),
                             Tab(
                               child: CustomTapBarItem(
-                                  text: "fares",
-                                  icon: Icons.add_alert,
-                                  isSelected: false),
-                            ),
-                            Tab(
-                              child: CustomTapBarItem(
-                                  text: "fares",
-                                  icon: Icons.add_alert,
+                                  text: "Holiday",
+                                  icon: Icons.holiday_village_outlined,
                                   isSelected: false),
                             ),
                           ]),

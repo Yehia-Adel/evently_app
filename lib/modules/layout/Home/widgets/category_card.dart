@@ -2,7 +2,7 @@ import 'package:evently_app/core/extensions/padding.dart';
 import 'package:evently_app/core/extensions/size.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/color_palette.dart';
+import '../../../../core/theme/color_palette.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({super.key});

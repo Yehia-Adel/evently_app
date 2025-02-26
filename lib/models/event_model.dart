@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class EventDataModel {
   static String collectionName = "EventDataCollection";
   String eventID;
-  final String eventTitle;
-  final String eventDescription;
-  final String eventCategory;
-  final String eventImage;
-  final DateTime eventDate;
-  final TimeOfDay eventTime;
-  final bool isFavorite;
+  String eventTitle;
+  String eventDescription;
+  String eventCategory;
+  String eventImage;
+  DateTime eventDate;
+  TimeOfDay eventTime;
+  bool isFavorite;
 
   EventDataModel({
     this.eventID = "",
@@ -29,7 +29,7 @@ class EventDataModel {
           eventDescription: jason["eventDescription"],
           eventCategory: jason["eventCategory"],
           eventImage: jason["eventImage"],
-          eventDate: jason["eventDate"],
+          eventDate: DateTime.fromMillisecondsSinceEpoch(jason["eventTime"]),
           eventTime: jason["eventTime"],
           isFavorite: jason["isFavorite"]);
 
@@ -40,7 +40,7 @@ class EventDataModel {
       "eventDescription": eventDescription,
       "eventCategory": eventCategory,
       "eventImage": eventImage,
-      "eventDate": eventDate,
+      "eventDate": eventDate.millisecondsSinceEpoch,
       "eventTime": eventTime,
       "isFavorite": isFavorite,
     };

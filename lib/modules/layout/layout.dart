@@ -1,10 +1,10 @@
 import 'package:evently_app/core/routes/pages_route_name.dart';
 import 'package:evently_app/core/theme/color_palette.dart';
 import 'package:evently_app/main.dart';
+import 'package:evently_app/modules/layout/Home/home_screen.dart';
 import 'package:evently_app/modules/layout/favorites_screen.dart';
-import 'package:evently_app/modules/layout/home_screen.dart';
 import 'package:evently_app/modules/layout/map_screen.dart';
-import 'package:evently_app/modules/layout/profile_screen.dart';
+import 'package:evently_app/modules/layout/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class Layout extends StatefulWidget {
@@ -21,8 +21,8 @@ class _LayoutState extends State<Layout> {
     const HomeScreen(),
     const MapScreen(),
     const SizedBox(),
-    const FavoritesScreen(),
-    const ProfileScreen()
+    const FavoritesView(),
+    const ProfileView()
   ];
 
   @override

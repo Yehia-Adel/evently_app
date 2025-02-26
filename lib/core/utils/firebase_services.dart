@@ -62,7 +62,7 @@ class FirebaseServices {
   }
 
 //do converter , current operation
-  CollectionReference<EventDataModel> getCollectionRef() {
+  static CollectionReference<EventDataModel> getCollectionReference() {
     return FirebaseFirestore.instance
         .collection(EventDataModel.collectionName)
         .withConverter(
@@ -71,17 +71,23 @@ class FirebaseServices {
             toFirestore: (eventModel, _) => eventModel.toFireStore());
   }
 
-  Future<void> createEvent(EventDataModel eventData) async {
-    final collectionRef = getCollectionRef();
-
-    //create new document on irFeStore under your collection
-    var docRef = collectionRef.doc();
-    docRef.set(eventData);
-
-    eventData.eventID = docRef.id;
+  static Future<bool> createNewEvent(EventDataModel data) async {
+    try {
+      var collectionRef = getCollectionReference();
+      var docRef = collectionRef.doc();
+      data.eventID = docRef.id;
+      docRef.set(data);
+      return Future.value(true);
+    } catch (error) {
+      return Future.value(false);
+    }
   }
 
-// readEvents(){
-//   final collectionRef=getCollectionRef();
-// }
+  Future readEvent(EventDataModel eventModel) async {
+    final collectionRef = getCollectionReference();
+
+    var getDoc = collectionRef.doc();
+    eventModel.eventID = getDoc.id;
+    return getDoc.set(eventModel);
+  }
 }
